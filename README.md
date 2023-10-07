@@ -10,14 +10,14 @@ Environmental categories are counted from '1' to '3':
 
 ## Structure: 
 
-**clean_data:** folder contain the datasets, also downloadable from Dryad (doi:10.5061/dryad.3tx95x6nf)
-**functions:** folder to store all functions called up by any of the scripts in parent dir. 
+**clean_data:** folder contain the datasets, also downloadable from Dryad (doi:10.5061/dryad.3tx95x6nf)  
+**functions:** folder to store all functions called up by any of the scripts in parent dir.   
 
-**analyses.R** - runs all results analyses 
-**figures.R** - codes figures for manuscript
-**joint_model.stan** - joint model framework code called by model.R
-**model.R** - applies joint model framework, transforms interactions and saves output 
-**run_me.sh** - bash script to run model.R for each environmental category, the analyses and the figures scripts
+**analyses.R** - runs all results analyses  
+**figures.R** - codes figures for manuscript  
+**joint_model.stan** - joint model framework code called by model.R  
+**model.R** - applies joint model framework, transforms interactions and saves output   
+**run_me.sh** - bash script to run model.R for each environmental category, the analyses and the figures scripts  
 
 Scripts should be run in the following order: 
 1 - model.R (for each environmental category)
