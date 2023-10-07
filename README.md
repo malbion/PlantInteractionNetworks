@@ -2,7 +2,7 @@ Author: Malyon D Bimler
 
 Includes all the data and code to run the models, analyses and figures for the paper and appendices, in a self-contained way. This folder should only contain 'necessary' code and figures.
 
-Environmental categories are counted from '1' to '3' :
+Environmental categories are counted from '1' to '3':  
 1 - 0 to 8% canopy cover  
 2 - 8 to 18% canopy cover  
 3 - 18 to 40% canopy cover  
