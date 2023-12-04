@@ -11,7 +11,7 @@ Environmental categories are counted from '1' to '3':
 ## Structure: 
 
 **clean_data:** folder contain the datasets, also downloadable from Dryad (doi:10.5061/dryad.3tx95x6nf)  
-**functions:** folder to store all functions called up by any of the scripts in parent dir.   
+**functions:** folder to store all functions called up by any of the scripts in parent dir   
 
 **analyses.R** - runs all results analyses  
 **figures.R** - codes figures for manuscript  
@@ -20,15 +20,14 @@ Environmental categories are counted from '1' to '3':
 **run_me.sh** - bash script to run model.R for each environmental category, the analyses and the figures scripts  
 
 Scripts should be run in the following order: 
-1 - model.R (for each environmental category)
-2 - analyses.R 
-3 - figures.R
+1 - model.R (for each environmental category)  
+2 - analyses.R  
+3 - figures.R  
 
 
-The scripts provided also call to the following folders, not uploaded here, to store results - for best results, create these same folders 
-The folders below should be empty previous to running the models and analyses:
+The scripts provided also call to the following folders, not uploaded here, to store results. For best results, create these same folders. They should be empty previous to running the models and analyses:
 
-**model:** folder to store files related to the joint model - output, validation tests, transformed parameters. Contains the following folders:  
+**model:** store files related to the joint model - output, validation tests, transformed parameters. Contains the following folders:  
 ./output/1 /2 /3  
 raw output from the joint model including full model fit (model_fit.Rdata), posterior draws and raw parameter samples. Samples are taken from 80% of the posterior.  
 ./transformed/1 /2 /3  
@@ -36,11 +35,9 @@ tranformed parameters: lambda, unscaled interaction parameters, growth rates and
 ./validation/1 /2 /3   
 plots for joint model validation. Includes traceplots, posterior uncertainty intervals, posterior predictive check, interactions from the IFM vs REM and rstan diagnostic plots.  
 
-**analyses:** folder to store analysis of parameter outputs and results 
+**analyses:** store analysis of parameter outputs and results 
 
-**figures:** folder to store figures appearing in the manuscript
-
-**figures:** folder to store figures included in the main text and appendices of the paper
+**figures:** store figures included in the main text and appendices of the paper
 
 
 
