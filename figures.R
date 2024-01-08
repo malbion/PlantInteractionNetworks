@@ -12,7 +12,6 @@ species_3 <- c("ARCA", "HYGL", "PEAI", "PLDE", "POCA", "PTGA", "STPA", "VERO", "
 
 library(magrittr)
 library(paletteer)
-# library(rethinking)
 library(tidyverse)
 library(ggjoy)
 library(cowplot)
@@ -23,6 +22,9 @@ library(mixtools)
 library(qgraph)
 library(fmsb)
 
+# defining path to file
+library(here)
+i_am('figures.R')
 
 #-------------------------------------------------------------------------------------------
 # FIGURE 1: COMPETITIVE VS FACILITATIVE OUTPUT
