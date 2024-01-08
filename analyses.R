@@ -1,5 +1,5 @@
 # Author: Malyon D. Bimler
-# Objective: Time to analyse this! 
+# Objective: Analyse the resulting interaction matrices
 
 #-------------------------------------------------------------------------------------------
 # PRELUDE
@@ -10,10 +10,14 @@ library(dplyr)
 library(magrittr)
 library(qgraph)
 
+# set up path to this file
+library(here)
+i_am('analyses.R')
+
 source('functions/analyses/calc_sp_ntwk_metrics.R')
 source('functions/analyses/calc_com_ntwk_metrics.R')
 
-# Select communities
+# Select environmental categories
 communities <- list.dirs('model/transformed/', full.names = F, recursive = F)
 # communities <- c('1', '2', '3') 
 
