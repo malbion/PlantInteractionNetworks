@@ -5,7 +5,7 @@
 #   
 #   R CMD BATCH '--args 0' model.R model/0_model_script.Rout
 # 
-# substituting '0' for the comm number (0, 1, 2, or 3) 
+# substituting '0' for the environmental category (1, 2, or 3) 
 # 
 # This calls up model.R, which runs joint_model.stan. 
 # results got to model/output, /transformed and /validation
@@ -14,17 +14,18 @@
 # PRELUDE 
 #-------------------------------------------------------------------------------------------
 
-Sys.time()
+Sys.time() # print time when script starts
 # Get arguments from bash script
 #!/usr/bin/env Rscript
 args = commandArgs(trailingOnly=TRUE)
-# take comm name as an argument from bash
+# take environmental category as an argument from bash
 if (length(args)==0) {
   stop("At least one argument must be supplied (input file).n", call.=FALSE)
 } 
 if (length(args)>1) {
-  stop("Model can only be run on 1 comm at a time.n", call.=FALSE)
+  stop("Model can only be run on 1 environmental category at a time.n", call.=FALSE)
 }
+# 'comm' identifies the environmental category we are running the model on (1, 2, or 3) 
 comm <- args[1]
 
 # set up R environment
@@ -32,8 +33,10 @@ library(rstan)
 rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores()) 
 
-setwd('~/Dropbox/Work/Projects/2018_Compnet/stormland/')
-
+# define local path to project and to this file
+library(here)
+i_am('model.R')
+# load relevant functions
 source('functions/model/data_prep.R')
 source('functions/model/stan_modelcheck_rem.R')
 source('functions/model/scale_interactions.R')
@@ -197,5 +200,5 @@ save(scaled.betas, file = paste0('model/transformed/', comm, '/scaled_betaij_mat
 #-------------------------------------------------------------------------------------------
 # END 
 gc(verbose = T)
-Sys.time()
+Sys.time() # print time when script ends
 
