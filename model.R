@@ -15,7 +15,10 @@
 #-------------------------------------------------------------------------------------------
 
 Sys.time() # print time when script starts
+
 # Get arguments from bash script
+# NB: comment this section out if running models from R instead of the terminal 
+############## comment out below if running directly in R ############## 
 #!/usr/bin/env Rscript
 args = commandArgs(trailingOnly=TRUE)
 # take environmental category as an argument from bash
@@ -27,6 +30,12 @@ if (length(args)>1) {
 }
 # 'comm' identifies the environmental category we are running the model on (1, 2, or 3) 
 comm <- args[1]
+############## comment out above if running directly in R ############## 
+# If running in R, simply select the desired environmental category on which to run the model
+# by uncommenting one of the lines below
+# comm <- 1
+# comm <- 2
+# comm <- 3
 
 # set up R environment
 library(rstan)

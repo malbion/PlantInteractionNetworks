@@ -19,7 +19,12 @@ source('functions/analyses/calc_com_ntwk_metrics.R')
 
 # Select environmental categories
 communities <- list.dirs('model/transformed/', full.names = F, recursive = F)
-# communities <- c('1', '2', '3') 
+
+# if you haven't run the model, you can still do the analyses here 
+# by replacing any calls to the 'model/transformed' folder with 'uploaded_results' 
+# example below:
+# communities <- list.dirs('uploaded_results/', full.names = F, recursive = F)
+
 
 #-------------------------------------------------------------------------------------------
 # EXAMINE SCALED INTERACTION MATRICES - MEDIAN, % F vs C, OVERLAP w/ 0 
@@ -27,6 +32,8 @@ communities <- list.dirs('model/transformed/', full.names = F, recursive = F)
 inter.mat <- list()
 inter.mat <- sapply(communities, function(c){
   load(paste0('model/transformed/', c, '/scaled_betaij_matrices.Rdata'))
+  # replace with line below if not running your own models
+  # load(paste0('uploaded_results/', c, '/scaled_betaij_matrices.Rdata'))
   inter.mat[[as.numeric(c)]] <- scaled.betas
 })
 
@@ -215,6 +222,8 @@ lapply(strats, function(foo) {sum(foo[ , 'cumd'])}) # to check which species mov
 inter.mat <- list()
 inter.mat <- sapply(c(1,2,3), function(c){
   load(paste0('model/transformed/', c, '/scaled_betaij_matrices.Rdata'))
+  # replace with line below if not running your own models
+  # load(paste0('uploaded_results/', c, '/scaled_betaij_matrices.Rdata'))
   inter.mat[[as.numeric(c)]] <- scaled.betas
 })
 # species which appear in all 3 communities 

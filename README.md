@@ -10,8 +10,9 @@ Environmental categories are counted from '1' to '3' and are identified with the
 
 ## Structure: 
 
-**clean_data:** folder contain the datasets, also downloadable from Dryad (doi:10.5061/dryad.3tx95x6nf)  
+**clean_data:** folder containing the datasets, also downloadable from Dryad (doi:10.5061/dryad.3tx95x6nf)  
 **functions:** folder to store all functions called up by any of the scripts in parent dir   
+**uploaded_results:** folder containing intermediate data files and results to run analyses and figures without having to run the model
 
 **analyses.R** - runs all results analyses  
 **figures.R** - codes figures for manuscript  
@@ -24,8 +25,9 @@ Scripts should be run in the following order:
 2 - analyses.R  
 3 - figures.R  
 
+Note that analyses.R and figures.R depend on data files that are written and saved by the previous scripts, into the folders described below. Copies of those data files have been saved in the uploaded_results folder so that analyses and figures can still be conducted without having to run the model. Note that given every model run is unique, those data files will differ slightly from any data files output by running the model on your personal computer. 
 
-The scripts provided also call to the following folders, not uploaded here, to store results. For best results, create these same folders. They should be empty previous to running the models and analyses:  
+The scripts above call to the following folders, not uploaded here, to store results. For best results, create these same folders. They should be empty previous to running the models and analyses:  
 
 **model:** store files related to the joint model - output, validation tests, transformed parameters. Contains the following folders:  
 ./output/1 /2 /3  
@@ -38,6 +40,7 @@ plots for joint model validation. Includes traceplots, posterior uncertainty int
 **analyses:** store analysis of parameter outputs and results   
 
 **figures:** store figures included in the main text and appendices of the paper  
+
 
 
 

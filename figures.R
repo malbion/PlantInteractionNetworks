@@ -26,11 +26,17 @@ library(fmsb)
 library(here)
 i_am('figures.R')
 
+# if you haven't run the model or the analyses, you can still create the figures
+# by accessing the appropriate files stored in the 'uploaded_results' folder
+
+
 #-------------------------------------------------------------------------------------------
 # FIGURE 1: COMPETITIVE VS FACILITATIVE OUTPUT
 #-------------------------------------------------------------------------------------------
 
 smets <- read.csv('analyses/species_metrics_mat.csv', stringsAsFactors = F)
+# replace with line below if not running your own model or analyses
+# smets <- read.csv('uploaded_results/species_metrics_mat.csv', stringsAsFactors = F)
 smm <- smets[is.na(smets$aii) == F, ]
 smm <- smm[ , c('species', 'com', 'spcID', 'sum_aij', 
                 'C_sum_aji', 'F_sum_aji', 'C_sum_aij', 'F_sum_aij')]
@@ -136,6 +142,8 @@ dev.off()
 #-------------------------------------------------------------------------------------------
 
 smets <- read.csv('analyses/species_metrics_mat.csv', stringsAsFactors = F)
+# replace with line below if not running your own model or analyses
+# smets <- read.csv('uploaded_results/species_metrics_mat.csv', stringsAsFactors = F)
 smm <- smets[is.na(smets$aii) == F, ]
 smm <- smm[ , c('species', 'com', 'spcID', 'aii', 'sum_aji')]
 
@@ -197,6 +205,8 @@ dev.off()
 inter.mat <- list()
 inter.mat <- sapply(c(1,2,3), function(c){
   load(paste0('model/transformed/', c, '/scaled_betaij_matrices.Rdata'))
+  # replace with line below if not running your own models
+  # load(paste0('uploaded_results/', c, '/scaled_betaij_matrices.Rdata'))
   inter.mat[[as.numeric(c)]] <- scaled.betas
 })
 # species which appear in all 3 communities 
@@ -267,6 +277,8 @@ grad <- paletteer_c("grDevices::Tropic", 30)
 grad <- grad[15:30]
 
 smets <- read.csv('analyses/species_metrics_mat.csv', stringsAsFactors = F)
+# replace with line below if not running your own model or analyses
+# smets <- read.csv('uploaded_results/species_metrics_mat.csv', stringsAsFactors = F)
 
 smm <- smets[is.na(smets$aii) == F, ]
 dff <- smm[ , c('spcID', 'species', 'com', 'perc.coop', 'perc.fullcomp')]
@@ -326,9 +338,13 @@ dev.off()
 inter.mat <- list()
 inter.mat <- sapply(c(1,2,3), function(c){
   load(paste0('model/transformed/', c, '/scaled_betaij_matrices.Rdata'))
+  # replace with line below if not running your own models
+  # load(paste0('uploaded_results/', c, '/scaled_betaij_matrices.Rdata'))
   inter.mat[[as.numeric(c)]] <- scaled.betas
 })
 smets <- read.csv('analyses/species_metrics_mat.csv', stringsAsFactors = F)
+# replace with line below if not running your own model or analyses
+# smets <- read.csv('uploaded_results/species_metrics_mat.csv', stringsAsFactors = F)
 smm <- smets[is.na(smets$aii) == F, ]
 
 netwks <- lapply(inter.mat, apply, c(1,2), median)
@@ -392,6 +408,9 @@ dev.off()
 require(fmsb)
 
 cmm <- read.csv('analyses/coms_metrics_mat.csv', stringsAsFactors = F)
+# replace with line below if not running your own model or analyses
+# cmm <- read.csv('uploaded_results/coms_metrics_mat.csv', stringsAsFactors = F)
+
 # Do one radar chart for each community, with sd of each var 
 
 # modifying reported variables slightly
@@ -554,6 +573,7 @@ dev.off()
 
 # Posterior Predictive checks
 source('functions/figures/post_pred_checks.R')
+# NB: This function will only work if you have run the stan models following model.R
 
 post_pred_fig(1, 'mu2')
 post_pred_fig(2, 'mu2')
@@ -564,6 +584,8 @@ post_pred_fig(3, 'mu2')
 #-------------------------------------------------------------------------------------------
 
 smm <- read.csv('analyses/species_metrics_mat.csv', stringsAsFactors = F)
+# replace with line below if not running your own model or analyses
+# smets <- read.csv('uploaded_results/species_metrics_mat.csv', stringsAsFactors = F)
 smm <- smm[ , c('species', 'com', 'spcID', 'sum_aij', 'C_sum_aji', 'F_sum_aji')]
 smm$F_sum_aji <- - smm$F_sum_aji
 
@@ -622,6 +644,8 @@ dev.off()
 #-------------------------------------------------------------------------------------------
 
 smets <- read.csv('analyses/species_metrics_mat.csv', stringsAsFactors = F)
+# replace with line below if not running your own model or analyses
+# smets <- read.csv('uploaded_results/species_metrics_mat.csv', stringsAsFactors = F)
 smm <- smets[is.na(smets$aii) == F, ]
 smm <- smm[ , c('species', 'com', 'spcID', 'aii', 'sum_aji', 'C_sum_aij', 'F_sum_aij')]
 smm$F_sum_aij <- - smm$F_sum_aij
@@ -683,6 +707,8 @@ grad <- grad[15:30]
 # triangle plots for all the other species 
 
 smm <- read.csv('analyses/species_metrics_mat.csv', stringsAsFactors = F)
+# replace with line below if not running your own model or analyses
+# smets <- read.csv('uploaded_results/species_metrics_mat.csv', stringsAsFactors = F)
 dff <- smm[ , c('spcID', 'species', 'com', 'perc.coop', 'perc.fullcomp')]
 dff <- cbind(dff, smm$perc.exploited + smm$perc.exploiter)
 colnames(dff) <- c('spcID', 'species', 'com', 'Cooperative', 'Competitive', 'Antagonistic')
@@ -730,6 +756,8 @@ dev.off()
 inter.mat <- list()
 inter.mat <- sapply(c(1,2,3), function(c){
   load(paste0('model/transformed/', c, '/scaled_betaij_matrices.Rdata'))
+  # replace with line below if not running your own models
+  # load(paste0('uploaded_results/', c, '/scaled_betaij_matrices.Rdata'))
   inter.mat[[as.numeric(c)]] <- scaled.betas
 })
 speciesnames <- read.csv('clean_data/key_speciesID0.csv', stringsAsFactors = F)$x
@@ -809,6 +837,8 @@ dev.off()
 inter.mat <- list()
 inter.mat <- sapply(c(1,2,3), function(c){
   load(paste0('model/transformed/', c, '/scaled_betaij_matrices.Rdata'))
+  # replace with line below if not running your own models
+  # load(paste0('uploaded_results/', c, '/scaled_betaij_matrices.Rdata'))
   inter.mat[[as.numeric(c)]] <- scaled.betas
 })
 # species which appear in all 3 communities 
@@ -871,9 +901,14 @@ dev.off()
 # SUPPS: CORRELATIONS BETWEEN NETWORK METRICS 
 #-------------------------------------------------------------------------------------------
 cmm <- read.csv('analyses/coms_metrics_mat.csv')
+# replace with line below if not running your own model or analyses
+# cmm <- read.csv('uploaded_results/coms_metrics_mat.csv', stringsAsFactors = F)
+
 inter.mat <- list()
 inter.mat <- sapply(c(1,2,3), function(c){
   load(paste0('model/transformed/', c, '/scaled_betaij_matrices.Rdata'))
+  # replace with line below if not running your own models
+  # load(paste0('uploaded_results/', c, '/scaled_betaij_matrices.Rdata'))
   inter.mat[[as.numeric(c)]] <- scaled.betas
 })
 upres <- lapply(inter.mat, function(tens) {
